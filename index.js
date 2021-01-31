@@ -21,7 +21,7 @@ for (let i = 0; i < contacts.length; i++) {
     let subject = `Hey ${contacts[i].firstName} ${contacts[i].lastName}! You are invited to First Year Telegram Group.`;
     
     var mailOptions = {
-        from: 'omkar.bhale@pccoepune.org',
+        from: user,
         to: contacts[i].email,
         subject: subject,
         html: html
@@ -32,8 +32,8 @@ for (let i = 0; i < contacts.length; i++) {
         if (error) {
             console.log(error);
         } else {
-            
-            console.log(`${i+1}th Email sent to ${contacts[i].email}, ${(i+1)/contacts.length*100}% complete!`);
+            fs.appendFileSync("log.txt", `\n\n${i}\n${contacts[i].email}\n${subject}\n${html}\n\n`, () => {})
+            console.log(`${i+1}th Email sent to ${contacts[i].email}`);
         }
     });
 }
