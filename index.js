@@ -17,14 +17,14 @@ var transporter = nodemailer.createTransport({
 async function send() {
     let remaining = [];
 
-    for (let i = 10; i < 398; i++) {
+    for (let i = 398; i < contacts.length; i++) {
 
         let html = text.replace("{{firstName}}", contacts[i].firstName);
         html = html.replace("{{lastName}}", contacts[i].lastName);
         let subject = `Hey ${contacts[i].firstName} ${contacts[i].lastName}! You are invited to First Year Telegram Group.`;
 
         var mailOptions = {
-            from: `"Omkar Bhale" ${user}`,
+            from: `"Suraj Jha" ${user}`,
             to: contacts[i].email,
             subject: subject,
             html: html
